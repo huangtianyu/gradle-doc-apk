@@ -9,10 +9,10 @@ import groovy.transform.CompileStatic;
  * FIXME
  */
 @CompileStatic
-public class Consts {
-    public static final String TITLE = "title";
-    public static final String URL = "url";
+class Consts {
+    static final String TITLE = "title"
+    static final String URL = "url"
 
-    public static final String BASE_URL = "http://gradledoc.qiniudn.com/1.12/userguide/";
-    public static final String USER_GUIDE = BASE_URL + "userguide.html";
+    static final String BASE_URL = "http://gradledoc.qiniudn.com/1.12/userguide/"
+    static final String USER_GUIDE = BASE_URL + "userguide.html"
 }

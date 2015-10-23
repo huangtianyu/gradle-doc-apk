@@ -1,11 +1,10 @@
-package com.githang.gradledoc.chapter;
+package com.githang.gradledoc.chapter
 
 import com.githang.gradledoc.datasource.AbstractResponse
-import groovy.transform.CompileStatic;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import groovy.transform.CompileStatic
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import org.jsoup.nodes.Element
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
@@ -14,17 +13,15 @@ import org.jsoup.select.Elements;
  * 文章处理
  */
 @CompileStatic
-public abstract class ChapterHandler extends AbstractResponse {
+abstract class ChapterHandler extends AbstractResponse {
     @Override
-    public String handleResponse(String response) {
-        Document doc = Jsoup.parse(response);
-        Element chapter = doc.select("div.chapter").first();
-        String title = chapter.select("div.titlepage").select("h1").text();
-        chapter.removeClass("titlepage");
-        Elements preElems = chapter.select("pre");
-        for (Element elem : preElems) {
-            elem.html(elem.html().replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp;"));
+    String handleResponse(String response) {
+        Document doc = Jsoup.parse(response)
+        Element chapter = doc.select("div.chapter").first()
+        chapter.removeClass("titlepage")
+        chapter.select("pre").each { elem ->
+            elem.html(elem.html().replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp"))
         }
-        return chapter.html();
+        return chapter.html()
     }
 }

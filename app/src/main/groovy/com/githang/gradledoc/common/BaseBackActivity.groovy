@@ -1,8 +1,8 @@
-package com.githang.gradledoc.common;
+package com.githang.gradledoc.common
 
-import android.os.Bundle;
+import android.os.Bundle
 import android.view.MenuItem
-import groovy.transform.CompileStatic;
+import groovy.transform.CompileStatic
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
@@ -10,20 +10,20 @@ import groovy.transform.CompileStatic;
  * Time: 21:59
  */
 @CompileStatic
-public class BaseBackActivity extends BaseActivity {
+class BaseBackActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        super.onCreate(savedInstanceState)
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true)
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
+    boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish()
+            return true
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 }

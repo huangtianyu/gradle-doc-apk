@@ -16,39 +16,39 @@ import groovy.transform.CompileStatic
  * FIXME
  */
 @CompileStatic
-public class HttpDBCache extends SQLiteOpenHelper {
+class HttpDBCache extends SQLiteOpenHelper {
 
-    private static HttpDBCache instance;
+    private static HttpDBCache instance
 
-    private static final int VERSION = 2;
-    private static final String DB_NAME = "http_cache_db";
+    private static final int VERSION = 2
+    private static final String DB_NAME = "http_cache_db"
 
-    private static final String TABLE_RESPONSE = "t_response";
-    private static final String COL_ID = "_id";
-    private static final String COL_URL = "url";
-    private static final String COL_RESPONSE = "response";
-    private static final String CREATE_RESPONSE = String.format(
-            "CREATE TABLE '%s'(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)",
-            TABLE_RESPONSE, COL_ID, COL_URL, COL_RESPONSE);
-    private static final String CREATE_RESPONSE_INDEX = String.format("CREATE UNIQUE INDEX unique_index_url ON %s (%s)", TABLE_RESPONSE, COL_URL);
+    private static final String TABLE_RESPONSE = "t_response"
+    private static final String COL_ID = "_id"
+    private static final String COL_URL = "url"
+    private static final String COL_RESPONSE = "response"
+    private static final String CREATE_RESPONSE =
+            "CREATE TABLE '$TABLE_RESPONSE'($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_URL TEXT, $COL_RESPONSE TEXT)"
+    private static final String CREATE_RESPONSE_INDEX =
+            "CREATE UNIQUE INDEX unique_index_url ON $TABLE_RESPONSE ($COL_URL)"
 
 //    private static final String TABLE_CONFIG = "t_config";
 //    private static final String CRAETE_CONFIG = "CREATE TABLE 't_config'(_id INTEGER PRIMARY KEY AUTOINCREMENT, key TEXT, value TEXT)";
 
 
     private HttpDBCache(Context context) {
-        super(context, DB_NAME, null, VERSION);
+        super(context, DB_NAME, null, VERSION)
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_RESPONSE);
-        db.execSQL(CREATE_RESPONSE_INDEX);
+    void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_RESPONSE)
+        db.execSQL(CREATE_RESPONSE_INDEX)
 //        db.execSQL(CRAETE_CONFIG);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
     /**
@@ -57,17 +57,14 @@ public class HttpDBCache extends SQLiteOpenHelper {
      * @param url
      * @return
      */
-    public String queryResponse(String url) {
-        SQLiteDatabase db = getReadableDatabase();
+    String queryResponse(String url) {
+        SQLiteDatabase db = getReadableDatabase()
         String sql = "select $COL_RESPONSE from $TABLE_RESPONSE where $COL_URL = ?"
         Cursor cursor = db.rawQuery(sql, url)
-        String response = null;
-        if (cursor.moveToNext()) {
-            response = cursor.getString(cursor.getColumnIndex(COL_RESPONSE));
-        }
-        cursor.close();
-        db.close();
-        return response;
+        String response = cursor.moveToNext() ? cursor.getString(cursor.getColumnIndex(COL_RESPONSE)) : null
+        cursor.close()
+        db.close()
+        return response
     }
 
     /**
@@ -76,22 +73,22 @@ public class HttpDBCache extends SQLiteOpenHelper {
      * @param url
      * @param response
      */
-    public void saveResponse(String url, String response) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(COL_URL, url);
-        cv.put(COL_RESPONSE, response);
-        db.replace(TABLE_RESPONSE, null, cv);
-        logMaxId(db);
-        db.close();
+    void saveResponse(String url, String response) {
+        SQLiteDatabase db = getWritableDatabase()
+        ContentValues cv = new ContentValues()
+        cv.put(COL_URL, url)
+        cv.put(COL_RESPONSE, response)
+        db.replace(TABLE_RESPONSE, null, cv)
+        logMaxId(db)
+        db.close()
     }
 
     private void logMaxId(SQLiteDatabase db) {
-        String sql = String.format(Locale.US, "select max(%s) AS maxId from %s", COL_ID, TABLE_RESPONSE);
-        Cursor cursor = db.rawQuery(sql, null);
+        String sql = "select max($COL_ID) AS maxId from $TABLE_RESPONSE"
+        Cursor cursor = db.rawQuery(sql, null)
         if (cursor.moveToNext()) {
-            int maxId = cursor.getInt(cursor.getColumnIndex("maxId"));
-            Log.d("Cache", "id ..." + maxId);
+            int maxId = cursor.getInt(cursor.getColumnIndex("maxId"))
+            Log.d("Cache", "id ..." + maxId)
         }
     }
 
@@ -115,10 +112,7 @@ public class HttpDBCache extends SQLiteOpenHelper {
 //        return null;
 //    }
 
-    public static synchronized HttpDBCache getInstance(Context context) {
-        if (instance == null) {
-            instance = new HttpDBCache(context.getApplicationContext());
-        }
-        return instance;
+    static synchronized HttpDBCache getInstance(Context context) {
+        instance = instance ?: new HttpDBCache(context.getApplicationContext())
     }
 }

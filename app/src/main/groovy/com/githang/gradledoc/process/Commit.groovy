@@ -8,23 +8,7 @@ import groovy.transform.CompileStatic;
  * Time: 22:26
  */
 @CompileStatic
-public class Commit {
-    private String title;
-    private String meta;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMeta() {
-        return meta;
-    }
-
-    public void setMeta(String meta) {
-        this.meta = meta;
-    }
+class Commit {
+    String title
+    String meta
 }

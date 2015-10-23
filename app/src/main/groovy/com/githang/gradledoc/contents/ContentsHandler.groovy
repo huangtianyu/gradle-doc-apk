@@ -1,10 +1,11 @@
 package com.githang.gradledoc.contents
+
 import com.githang.gradledoc.datasource.AbstractResponse
 import groovy.transform.CompileStatic
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
+
 /**
  * 目录。
  * User: Geek_Soledad(msdx.android@qq.com)
@@ -12,20 +13,20 @@ import org.jsoup.select.Elements
  * Time: 13:03
  */
 @CompileStatic
-public abstract class ContentsHandler extends AbstractResponse {
+abstract class ContentsHandler extends AbstractResponse {
     @Override
-    public void onUISuccess(String response) {
-        Document doc = Jsoup.parse(response);
-        Elements elements = doc.select("span.chapter");
-        List<ChapterUrl> chapterUrls = new ArrayList<>();
-        for (Element elem : elements) {
-            ChapterUrl url = new ChapterUrl();
-            url.setUrl(elem.select("a[href]").attr("href"));
-            url.setTitle(elem.text());
-            chapterUrls.add(url);
+    void onUISuccess(String response) {
+        Document doc = Jsoup.parse(response)
+        Elements elements = doc.select("span.chapter")
+        List<ChapterUrl> chapterUrls = new ArrayList<>()
+        elements.each { elem ->
+            ChapterUrl url = new ChapterUrl()
+            url.setUrl(elem.select("a[href]").attr("href"))
+            url.setTitle(elem.text())
+            chapterUrls.add(url)
         }
-        onResult(chapterUrls);
+        onResult(chapterUrls)
     }
 
-    public abstract void onResult(List<ChapterUrl> chapterUrls);
+    abstract void onResult(List<ChapterUrl> chapterUrls)
 }
