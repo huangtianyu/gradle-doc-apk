@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'groovyx.grooid.groovy-android'
 
 ext.keyPswd = hasProperty("keyPswd")? getProperty("keyPswd"):""
 
@@ -68,4 +69,15 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.githang:umeng-update:2.6.0.1'
+    compile 'org.codehaus.groovy:groovy:2.4.3:grooid'
+}
+
+project.androidGroovy {
+    options {
+        configure(groovyOptions) {
+            encoding = 'UTF-8'
+        }
+        sourceCompatibility = '1.7'
+        targetCompatibility = '1.7'
+    }
 }
