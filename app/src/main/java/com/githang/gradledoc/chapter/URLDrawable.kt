@@ -13,7 +13,7 @@ import android.graphics.drawable.BitmapDrawable
  */
 class URLDrawable : BitmapDrawable() {
     protected var mBitmap: Bitmap? = null
-    protected var mSrc: Rect
+    protected var mSrc: Rect? = null
 
     fun setBitmap(bitmap: Bitmap) {
         mBitmap = bitmap

@@ -23,7 +23,7 @@ class ProcessActivity : BaseBackActivity() {
 
     private val mProcessHandler = object : ProcessHandler() {
         override fun onResult(commits: List<Commit>) {
-            mListView!!.adapter = object : BaseListAdapter<Commit>(mContext, commits, R.layout.item_process) {
+            mListView!!.adapter = object : BaseListAdapter<Commit>(mContext!!, commits, R.layout.item_process) {
                 override fun initItemView(position: Int, itemView: View) {
                     val commit = getItem(position)
                     (itemView.findViewById(R.id.commit_title) as TextView).text = commit.title
@@ -56,7 +56,7 @@ class ProcessActivity : BaseBackActivity() {
         mProgressDialog!!.setMessage(getString(R.string.loading))
         mProgressDialog!!.setOnCancelListener(object : DialogInterface.OnCancelListener {
             override fun onCancel(dialog: DialogInterface) {
-                HttpProxy.getInstance(mContext).cancelRequests(mContext)
+                HttpProxy.getInstance(mContext!!).cancelRequests(mContext!!)
             }
         })
 
@@ -78,7 +78,7 @@ class ProcessActivity : BaseBackActivity() {
 
         if (id == R.id.action_refresh) {
             mProgressDialog!!.show()
-            HttpProxy.getInstance(this).forceRequestUrl(mContext, URL_PROCESS, mProcessHandler)
+            HttpProxy.getInstance(this).forceRequestUrl(mContext!!, URL_PROCESS, mProcessHandler)
             return true
         }
         return super.onOptionsItemSelected(item)

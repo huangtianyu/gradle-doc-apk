@@ -1,16 +1,12 @@
 package com.githang.gradledoc.datasource
 
 import android.content.Context
-
 import com.squareup.okhttp.Callback
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import com.squareup.okhttp.Response
-
 import java.io.IOException
-import java.util.ArrayList
-import java.util.Locale
-import java.util.WeakHashMap
+import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -24,24 +20,21 @@ class HttpProxy(context: Context) {
 
     private val mCache: HttpDBCache
     private val mHttpClient: OkHttpClient
-    private val mRequestTags: WeakHashMap<Context, List<Int>>
+    private val mRequestTags: WeakHashMap<Context, MutableList<Int>>
 
     init {
         mHttpClient = OkHttpClient()
         mHttpClient.setConnectTimeout(15, TimeUnit.SECONDS)
         mHttpClient.setReadTimeout(15, TimeUnit.SECONDS)
         mHttpClient.setWriteTimeout(15, TimeUnit.SECONDS)
-        mRequestTags = WeakHashMap<Context, List<Int>>()
+        mRequestTags = WeakHashMap<Context, MutableList<Int>>()
         mCache = HttpDBCache.getInstance(context)
     }
 
     /**
      * 强制从互联网上请求
-
      * @param context
-     * *
      * @param url
-     * *
      * @param resp
      */
     fun forceRequestUrl(context: Context, url: String, resp: AbstractResponse) {
@@ -49,7 +42,7 @@ class HttpProxy(context: Context) {
         saveTag(context, tag)
         mHttpClient.newCall(Request.Builder().url(url).tag(tag).build()).enqueue(object : Callback {
             override fun onFailure(request: Request?, e: IOException) {
-                val msg = e.getMessage().toUpperCase(Locale.US)
+                val msg = e.getMessage()!!.toUpperCase(Locale.US)
                 if (!msg.contains("CANCELED") && !msg.contains("SOCKET CLOSED")) {
                     resp.onFailure("", e)
                 }
@@ -80,13 +73,9 @@ class HttpProxy(context: Context) {
 
     /**
      * 请求页面。
-
      * @param context
-     * *
      * @param url
-     * *
      * @param response
-     * *
      * @return true 表示从缓存当中获取内容，false表示缓存当在没有内容，通过网络获取。
      */
     fun requestUrl(context: Context, url: String, response: AbstractResponse): Boolean {
@@ -103,7 +92,6 @@ class HttpProxy(context: Context) {
 
     /**
      * 取消请求
-
      * @param context
      */
     fun cancelRequests(context: Context) {
@@ -113,12 +101,12 @@ class HttpProxy(context: Context) {
                 for (tag in tags) {
                     mHttpClient.cancel(tag)
                 }
-                tags.clear()
+                tags.orEmpty()
             }
         }
     }
 
-    private fun saveTag(context: Context, tag: Int?) {
+    private fun saveTag(context: Context, tag: Int) {
         synchronized (mRequestTags) {
             var tags: MutableList<Int>? = mRequestTags[context]
             if (tags == null) {
@@ -144,7 +132,7 @@ class HttpProxy(context: Context) {
             if (instance == null) {
                 instance = HttpProxy(context)
             }
-            return instance
+            return instance!!
         }
     }
 }

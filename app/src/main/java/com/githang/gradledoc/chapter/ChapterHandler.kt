@@ -1,11 +1,7 @@
 package com.githang.gradledoc.chapter
 
 import com.githang.gradledoc.datasource.AbstractResponse
-
 import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
-import org.jsoup.select.Elements
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)

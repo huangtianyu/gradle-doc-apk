@@ -34,7 +34,7 @@ class ChapterActivity : BaseBackActivity() {
 
     private val mChapterHandler = object : ChapterHandler() {
         override fun onUISuccess(content: String) {
-            mDocView!!.text = Html.fromHtml(content, URLImageParser(mDocView), ExtendedTagHandler())
+            mDocView!!.text = Html.fromHtml(content, URLImageParser(mDocView!!), ExtendedTagHandler())
         }
 
         override fun onUIFailed(e: Throwable) {
@@ -63,7 +63,7 @@ class ChapterActivity : BaseBackActivity() {
 
     private fun requestContents() {
         mProgressDialog!!.show()
-        HttpProxy.getInstance(this).requestUrl(this, url, mChapterHandler)
+        HttpProxy.getInstance(this).requestUrl(this, url!!, mChapterHandler)
     }
 
 
@@ -74,7 +74,7 @@ class ChapterActivity : BaseBackActivity() {
         mProgressDialog!!.setMessage(getString(R.string.loading))
         mProgressDialog!!.setOnCancelListener(object : DialogInterface.OnCancelListener {
             override fun onCancel(dialog: DialogInterface) {
-                mHttpProxy!!.cancelRequests(mContext)
+                mHttpProxy!!.cancelRequests(mContext!!)
             }
         })
     }
@@ -90,7 +90,7 @@ class ChapterActivity : BaseBackActivity() {
 
         if (id == R.id.action_refresh) {
             mProgressDialog!!.show()
-            mHttpProxy!!.forceRequestUrl(mContext, url, mChapterHandler)
+            mHttpProxy!!.forceRequestUrl(mContext!!, url!!, mChapterHandler)
             return true
         }
 

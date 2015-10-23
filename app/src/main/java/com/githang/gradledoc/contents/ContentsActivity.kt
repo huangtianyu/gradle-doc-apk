@@ -26,7 +26,6 @@ import com.umeng.update.UmengUpdateAgent
 
 /**
  * 目录。
-
  * @author Geek_Soledad (msdx.android@qq.com)
  */
 class ContentsActivity : BaseActivity() {
@@ -75,7 +74,7 @@ class ContentsActivity : BaseActivity() {
         mProgressDialog!!.setMessage(getString(R.string.loading))
         mProgressDialog!!.setOnCancelListener(object : DialogInterface.OnCancelListener {
             override fun onCancel(dialog: DialogInterface) {
-                mHttpProxy!!.cancelRequests(mContext)
+                mHttpProxy!!.cancelRequests(mContext!!)
             }
         })
 
@@ -107,7 +106,7 @@ class ContentsActivity : BaseActivity() {
         when (id) {
             R.id.action_refresh -> {
                 mProgressDialog!!.show()
-                mHttpProxy!!.forceRequestUrl(mContext, Consts.USER_GUIDE, mContentsHandler)
+                mHttpProxy!!.forceRequestUrl(mContext!!, Consts.USER_GUIDE, mContentsHandler)
                 return true
             }
             R.id.action_about -> {

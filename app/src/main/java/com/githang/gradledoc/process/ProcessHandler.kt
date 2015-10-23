@@ -1,13 +1,8 @@
 package com.githang.gradledoc.process
 
 import com.githang.gradledoc.datasource.AbstractResponse
-
 import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
-import org.jsoup.select.Elements
-
-import java.util.ArrayList
+import java.util.*
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)

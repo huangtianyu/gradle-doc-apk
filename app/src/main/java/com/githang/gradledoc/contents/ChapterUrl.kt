@@ -12,6 +12,6 @@ class ChapterUrl {
     var url: String? = null
 
     override fun toString(): String {
-        return title
+        return title!!
     }
 }

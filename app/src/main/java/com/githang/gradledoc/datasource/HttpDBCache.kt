@@ -2,13 +2,9 @@ package com.githang.gradledoc.datasource
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-
-import java.util.Locale
-import java.util.concurrent.locks.Lock
 
 /**
  * HTTP请求数据缓存
@@ -113,11 +109,11 @@ private constructor(context: Context) : SQLiteOpenHelper(context, HttpDBCache.DB
         //        return null;
         //    }
 
-        @Synchronized fun getInstance(context: Context): HttpDBCache? {
+        @Synchronized fun getInstance(context: Context): HttpDBCache {
             if (instance == null) {
                 instance = HttpDBCache(context.applicationContext)
             }
-            return instance
+            return instance!!
         }
 
     }

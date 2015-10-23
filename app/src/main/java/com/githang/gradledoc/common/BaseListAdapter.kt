@@ -29,7 +29,7 @@ abstract class BaseListAdapter<T>(private val mContext: Context, private val mDa
         if (convertView == null) {
             convertView = View.inflate(mContext, mLayoutId, null)
         }
-        initItemView(position, convertView)
+        initItemView(position, convertView!!)
         return convertView
     }
 
