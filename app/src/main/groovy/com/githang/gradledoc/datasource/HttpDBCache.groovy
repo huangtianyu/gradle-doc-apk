@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import groovy.transform.CompileStatic
 
 /**
  * HTTP请求数据缓存
@@ -14,6 +15,7 @@ import android.util.Log
  * Time: 12:24
  * FIXME
  */
+@CompileStatic
 public class HttpDBCache extends SQLiteOpenHelper {
 
     private static HttpDBCache instance;

@@ -2,7 +2,8 @@ package com.githang.gradledoc.datasource;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
+import android.os.Message
+import groovy.transform.CompileStatic;
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
@@ -10,6 +11,7 @@ import android.os.Message;
  * Time: 12:51
  * FIXME
  */
+@CompileStatic
 public abstract class AbstractResponse {
     static final int SUCCESS = 0;
     static final int FAILED = 1;

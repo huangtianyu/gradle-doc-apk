@@ -8,8 +8,10 @@ import android.widget.TextView;
 
 import com.githang.gradledoc.R;
 import com.githang.gradledoc.common.BaseBackActivity;
-import com.umeng.analytics.MobclickAgent;
+import com.umeng.analytics.MobclickAgent
+import groovy.transform.CompileStatic;
 
+@CompileStatic
 public class AboutActivity extends BaseBackActivity {
     private static final String LOG_TAG = AboutActivity.class.getSimpleName();
 

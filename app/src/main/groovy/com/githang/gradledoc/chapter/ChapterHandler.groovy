@@ -1,7 +1,7 @@
 package com.githang.gradledoc.chapter;
 
-import com.githang.gradledoc.datasource.AbstractResponse;
-
+import com.githang.gradledoc.datasource.AbstractResponse
+import groovy.transform.CompileStatic;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,6 +13,7 @@ import org.jsoup.select.Elements;
  * Time: 21:36
  * 文章处理
  */
+@CompileStatic
 public abstract class ChapterHandler extends AbstractResponse {
     @Override
     public String handleResponse(String response) {

@@ -1,4 +1,6 @@
-package com.githang.gradledoc;
+package com.githang.gradledoc
+
+import groovy.transform.CompileStatic;
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
@@ -6,6 +8,7 @@ package com.githang.gradledoc;
  * Time: 13:04
  * FIXME
  */
+@CompileStatic
 public class Consts {
     public static final String TITLE = "title";
     public static final String URL = "url";

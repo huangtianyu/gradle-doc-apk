@@ -1,4 +1,6 @@
-package com.githang.gradledoc.contents;
+package com.githang.gradledoc.contents
+
+import groovy.transform.CompileStatic;
 
 /**
  * 目录中的章节名称及名字
@@ -7,6 +9,7 @@ package com.githang.gradledoc.contents;
  * Time: 13:00
  * FIXME
  */
+@CompileStatic
 public class ChapterUrl {
     private String title;
     private String url;

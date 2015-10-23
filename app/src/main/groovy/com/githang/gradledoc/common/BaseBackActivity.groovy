@@ -1,13 +1,15 @@
 package com.githang.gradledoc.common;
 
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.MenuItem
+import groovy.transform.CompileStatic;
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
  * Date: 2014-12-03
  * Time: 21:59
  */
+@CompileStatic
 public class BaseBackActivity extends BaseActivity {
 
     @Override

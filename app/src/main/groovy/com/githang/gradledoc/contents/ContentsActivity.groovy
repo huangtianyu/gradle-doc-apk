@@ -1,36 +1,32 @@
-package com.githang.gradledoc.contents;
-
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import com.githang.gradledoc.Consts;
-import com.githang.gradledoc.R;
-import com.githang.gradledoc.chapter.ChapterActivity;
-import com.githang.gradledoc.common.BaseActivity;
-import com.githang.gradledoc.datasource.HttpProxy;
-import com.githang.gradledoc.others.AboutActivity;
-import com.githang.gradledoc.process.ProcessActivity;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengUpdateAgent;
-
-import java.util.List;
-
-
+package com.githang.gradledoc.contents
+import android.app.ProgressDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
+import com.githang.gradledoc.Consts
+import com.githang.gradledoc.R
+import com.githang.gradledoc.chapter.ChapterActivity
+import com.githang.gradledoc.common.BaseActivity
+import com.githang.gradledoc.datasource.HttpProxy
+import com.githang.gradledoc.others.AboutActivity
+import com.githang.gradledoc.process.ProcessActivity
+import com.umeng.analytics.MobclickAgent
+import com.umeng.update.UmengUpdateAgent
+import groovy.transform.CompileStatic
 /**
  * 目录。
  *
  * @author Geek_Soledad (msdx.android@qq.com)
  */
+@CompileStatic
 public class ContentsActivity extends BaseActivity {
     private static final String LOG_TAG = ContentsActivity.class.getSimpleName();
 
@@ -75,7 +71,7 @@ public class ContentsActivity extends BaseActivity {
                 Intent intent = new Intent(mContext, ChapterActivity.class);
                 intent.putExtra(Consts.TITLE, chapterUrl.getTitle());
                 intent.putExtra(Consts.URL, Consts.BASE_URL + chapterUrl.getUrl());
-                startActivity(intent);
+                mContext.startActivity(intent);
             }
         });
         mProgressDialog = new ProgressDialog(this);

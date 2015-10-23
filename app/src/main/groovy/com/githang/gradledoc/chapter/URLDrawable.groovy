@@ -3,7 +3,8 @@ package com.githang.gradledoc.chapter;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.BitmapDrawable
+import groovy.transform.CompileStatic;
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
@@ -11,6 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
  * Time: 00:09
  * FIXME
  */
+@CompileStatic
 public class URLDrawable extends BitmapDrawable {
     protected Bitmap mBitmap;
     protected Rect mSrc;

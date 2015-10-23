@@ -1,10 +1,13 @@
-package com.githang.gradledoc.process;
+package com.githang.gradledoc.process
+
+import groovy.transform.CompileStatic;
 
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
  * Date: 2014-12-03
  * Time: 22:26
  */
+@CompileStatic
 public class Commit {
     private String title;
     private String meta;

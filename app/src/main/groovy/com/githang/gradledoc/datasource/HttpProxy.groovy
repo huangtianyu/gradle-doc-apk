@@ -1,26 +1,20 @@
-package com.githang.gradledoc.datasource;
+package com.githang.gradledoc.datasource
+import android.content.Context
+import com.squareup.okhttp.Callback
+import com.squareup.okhttp.OkHttpClient
+import com.squareup.okhttp.Request
+import com.squareup.okhttp.Response
+import groovy.transform.CompileStatic
 
-import android.content.Context;
-
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.WeakHashMap;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicInteger
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
  * Date: 2014-11-29
  * Time: 12:19
  * FIXME
  */
+@CompileStatic
 public class HttpProxy {
     private static final AtomicInteger TAG_GENERATOR = new AtomicInteger(0);
     private static HttpProxy instance;
@@ -139,7 +133,7 @@ public class HttpProxy {
         synchronized (mRequestTags) {
             List<Integer> tags = mRequestTags.get(context);
             if (tags != null) {
-                tags.remove(tag);
+                tags.removeElement(tag);
             }
         }
     }

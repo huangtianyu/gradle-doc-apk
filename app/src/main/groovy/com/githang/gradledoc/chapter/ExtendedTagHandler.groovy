@@ -1,8 +1,8 @@
 package com.githang.gradledoc.chapter;
 
 import android.text.Editable;
-import android.text.Html;
-
+import android.text.Html
+import groovy.transform.CompileStatic;
 import org.xml.sax.XMLReader;
 
 /**
@@ -11,6 +11,7 @@ import org.xml.sax.XMLReader;
  * Date: 2014-11-30
  * Time: 19:12
  */
+@CompileStatic
 public class ExtendedTagHandler implements Html.TagHandler {
     private static final String LOG_TAG = ExtendedTagHandler.class.getSimpleName();
     boolean first = true;

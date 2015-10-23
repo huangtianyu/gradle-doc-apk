@@ -1,23 +1,21 @@
-package com.githang.gradledoc.process;
+package com.githang.gradledoc.process
+import android.app.ProgressDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.ListView
+import android.widget.TextView
+import android.widget.Toast
+import com.githang.gradledoc.R
+import com.githang.gradledoc.common.BaseBackActivity
+import com.githang.gradledoc.common.BaseListAdapter
+import com.githang.gradledoc.datasource.HttpProxy
+import groovy.transform.CompileStatic
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.githang.gradledoc.R;
-import com.githang.gradledoc.common.BaseBackActivity;
-import com.githang.gradledoc.common.BaseListAdapter;
-import com.githang.gradledoc.datasource.HttpProxy;
-
-import java.util.List;
-
+@CompileStatic
 public class ProcessActivity extends BaseBackActivity {
     private static final String URL_PROCESS = "https://github.com/msdx/gradledoc/commits/1.12";
     private ProgressDialog mProgressDialog;

@@ -20,8 +20,10 @@ import com.githang.gradledoc.common.BaseBackActivity;
 import com.githang.gradledoc.datasource.HttpProxy;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.umeng.analytics.MobclickAgent;
+import com.umeng.analytics.MobclickAgent
+import groovy.transform.CompileStatic;
 
+@CompileStatic
 public class ChapterActivity extends BaseBackActivity {
     private static final String LOG_TAG = ChapterActivity.class.getSimpleName();
     private String url;
@@ -136,7 +138,7 @@ public class ChapterActivity extends BaseBackActivity {
                 public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                     urlDrawable.setBitmap(loadedImage);
                     int width =  mTextView.getWidth() - 2 * mTextView.getTotalPaddingRight();
-                    int height = loadedImage.getHeight() * width / loadedImage.getWidth();
+                    int height = (loadedImage.getHeight() * width / loadedImage.getWidth()) as int;
                     urlDrawable.setBounds(0, 0, width, height);
                     mTextView.invalidate();
                     mTextView.setText(mTextView.getText());

@@ -1,17 +1,15 @@
-package com.githang.gradledoc.common;
-
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-
-import java.util.List;
-
+package com.githang.gradledoc.common
+import android.content.Context
+import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
+import groovy.transform.CompileStatic
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
  * Date: 2014-12-03
  * Time: 22:31
  */
+@CompileStatic
 public abstract class BaseListAdapter<T> extends BaseAdapter {
     private Context mContext;
     private List<T> mData;

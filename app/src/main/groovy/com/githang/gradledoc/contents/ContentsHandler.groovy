@@ -1,21 +1,17 @@
-package com.githang.gradledoc.contents;
-
-import com.githang.gradledoc.datasource.AbstractResponse;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
-import java.util.List;
-
+package com.githang.gradledoc.contents
+import com.githang.gradledoc.datasource.AbstractResponse
+import groovy.transform.CompileStatic
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import org.jsoup.nodes.Element
+import org.jsoup.select.Elements
 /**
  * 目录。
  * User: Geek_Soledad(msdx.android@qq.com)
  * Date: 2014-11-29
  * Time: 13:03
  */
+@CompileStatic
 public abstract class ContentsHandler extends AbstractResponse {
     @Override
     public void onUISuccess(String response) {
