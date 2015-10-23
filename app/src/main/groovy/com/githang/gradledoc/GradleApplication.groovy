@@ -1,18 +1,13 @@
-package com.githang.gradledoc;
-
-import android.app.Application;
-import android.graphics.Bitmap;
-
-import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiscCache;
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.umeng.analytics.MobclickAgent;
-
-import java.io.IOException;
-
+package com.githang.gradledoc
+import android.app.Application
+import android.graphics.Bitmap
+import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiscCache
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache
+import com.nostra13.universalimageloader.core.DisplayImageOptions
+import com.nostra13.universalimageloader.core.ImageLoader
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
+import com.umeng.analytics.MobclickAgent
 /**
  * User: Geek_Soledad(msdx.android@qq.com)
  * Date: 2014-11-29

@@ -1,13 +1,11 @@
-package com.githang.gradledoc.datasource;
+package com.githang.gradledoc.datasource
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.util.Locale;
+import android.content.ContentValues
+import android.content.Context
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 /**
  * HTTP请求数据缓存
@@ -59,8 +57,8 @@ public class HttpDBCache extends SQLiteOpenHelper {
      */
     public String queryResponse(String url) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_RESPONSE, new String[]{COL_ID, COL_URL, COL_RESPONSE},
-                COL_URL + "=?", new String[]{url}, null, null, null);
+        String sql = "select $COL_RESPONSE from $TABLE_RESPONSE where $COL_URL = ?"
+        Cursor cursor = db.rawQuery(sql, url)
         String response = null;
         if (cursor.moveToNext()) {
             response = cursor.getString(cursor.getColumnIndex(COL_RESPONSE));
