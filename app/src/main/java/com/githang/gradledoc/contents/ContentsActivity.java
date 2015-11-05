@@ -20,8 +20,8 @@ import com.githang.gradledoc.common.BaseActivity;
 import com.githang.gradledoc.datasource.HttpProxy;
 import com.githang.gradledoc.others.AboutActivity;
 import com.githang.gradledoc.process.ProcessActivity;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengUpdateAgent;
+//import com.umeng.analytics.MobclickAgent;
+//import com.umeng.update.UmengUpdateAgent;
 
 import java.util.List;
 
@@ -90,9 +90,9 @@ public class ContentsActivity extends BaseActivity {
 
         requestContents();
 
-        UmengUpdateAgent.setUpdateAutoPopup(true);
-        UmengUpdateAgent.setUpdateOnlyWifi(false);
-        UmengUpdateAgent.update(this);
+//        UmengUpdateAgent.setUpdateAutoPopup(true);
+//        UmengUpdateAgent.setUpdateOnlyWifi(false);
+//        UmengUpdateAgent.update(this);
     }
 
     private void requestContents() {
@@ -115,20 +115,17 @@ public class ContentsActivity extends BaseActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch (id) {
-            case R.id.action_refresh:
-                mProgressDialog.show();
-                mHttpProxy.forceRequestUrl(mContext, Consts.USER_GUIDE, mContentsHandler);
-                return true;
-            case R.id.action_about:
-                startActivity(new Intent(mContext, AboutActivity.class));
-                return true;
-            case R.id.action_process:
-                startActivity(new Intent(mContext, ProcessActivity.class));
-            default:
-                return super.onOptionsItemSelected(item);
+        if (id == R.id.action_refresh) {
+            mProgressDialog.show();
+            mHttpProxy.forceRequestUrl(mContext, Consts.USER_GUIDE, mContentsHandler);
+        } else if (id == R.id.action_about) {
+            startActivity(new Intent(mContext, AboutActivity.class));
+        } else if (id == R.id.action_process) {
+            startActivity(new Intent(mContext, ProcessActivity.class));
+        } else{
+            return super.onOptionsItemSelected(item);
         }
-
+        return true;
     }
 
 

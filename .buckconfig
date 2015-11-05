@@ -1,0 +1,9 @@
+[alias]
+	appRelease = //app:bin_release
+	appDebug = //app:bin_debug
+
+[android]
+	target = android-22
+
+[project]
+	ignore = .git, **/.svn,

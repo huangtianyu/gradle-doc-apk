@@ -1,0 +1,145 @@
+android_resource(
+	name = 'res_main',
+	res = 'src/main/res',
+	package = 'com.githang.gradledoc',
+	deps = [
+		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
+		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+
+android_build_config(
+	name = 'build_config_debug',
+	package = 'com.githang.gradledoc',
+	values = [
+		'String VERSION_NAME = "0.2.1"',
+		'int VERSION_CODE = 9',
+		'String APPLICATION_ID = "com.githang.gradledoc"',
+		'String BUILD_TYPE = "debug"',
+		'String FLAVOR = "default"',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+
+android_build_config(
+	name = 'build_config_release',
+	package = 'com.githang.gradledoc',
+	values = [
+		'String VERSION_NAME = "0.2.1"',
+		'int VERSION_CODE = 9',
+		'String APPLICATION_ID = "com.githang.gradledoc"',
+		'String BUILD_TYPE = "release"',
+		'String FLAVOR = "default"',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+
+android_library(
+	name = 'src_debug',
+	srcs = glob([
+		'src/main/java/**/*.java',
+	]),
+	annotation_processors = [
+	],
+	annotation_processor_deps = [
+		'//.okbuck/annotation_processor_deps/app:all_jars',
+		'//.okbuck/annotation_processor_deps/app:all_aars',
+	],
+	deps = [
+		':res_main',
+		':build_config_debug',
+		'//.okbuck/app:jar__okhttp-2.5.0.jar',
+		'//.okbuck/app:jar__support-annotations-22.2.1.jar',
+		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
+		'//.okbuck/app:jar__umeng-analytics-v5.6.1.jar',
+		'//.okbuck/app:jar__systembartint-1.0.3.jar',
+		'//.okbuck/app:jar__universal-image-loader-1.9.3.jar',
+		'//.okbuck/app:jar__jsoup-1.8.1.jar',
+		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+
+android_library(
+	name = 'src_release',
+	srcs = glob([
+		'src/main/java/**/*.java',
+	]),
+	annotation_processors = [
+	],
+	annotation_processor_deps = [
+		'//.okbuck/annotation_processor_deps/app:all_jars',
+		'//.okbuck/annotation_processor_deps/app:all_aars',
+	],
+	deps = [
+		':res_main',
+		':build_config_release',
+		'//.okbuck/app:jar__okhttp-2.5.0.jar',
+		'//.okbuck/app:jar__okio-1.6.0.jar',
+		'//.okbuck/app:jar__support-annotations-22.2.1.jar',
+		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
+		'//.okbuck/app:jar__umeng-analytics-v5.6.1.jar',
+		'//.okbuck/app:jar__systembartint-1.0.3.jar',
+		'//.okbuck/app:jar__universal-image-loader-1.9.3.jar',
+		'//.okbuck/app:jar__jsoup-1.8.1.jar',
+		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+
+project_config(
+	src_target = '//app:src',
+	src_roots = [
+		'src/main/java',
+	],
+)
+
+android_manifest(
+	name = 'manifest',
+	skeleton = 'src/main/AndroidManifest.xml',
+	deps = [
+		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
+		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+
+android_binary(
+	name = 'bin_debug',
+	manifest = ':manifest',
+	keystore = '//.okbuck/keystore/app:key_store',
+	deps = [
+		':src_debug',
+		':res_main',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+
+android_binary(
+	name = 'bin_release',
+	manifest = ':manifest',
+	keystore = '//.okbuck/keystore/app:key_store',
+	deps = [
+		':src_release',
+		':res_main',
+	],
+	visibility = [
+		'PUBLIC',
+	],
+)
+

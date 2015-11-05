@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 
-ext.keyPswd = hasProperty("keyPswd")? getProperty("keyPswd"):""
-
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
@@ -23,7 +21,7 @@ android {
             storeFile file("../gradle.jks")
             storePassword "Gradle"
             keyAlias "Gradle"
-            keyPassword keyPswd
+            keyPassword "Gradledoc"
         }
     }
 
@@ -49,11 +47,6 @@ android {
         abortOnError false
     }
 
-    sourceSets{
-        main {
-            jniLibs.srcDirs 'libs'
-        }
-    }
 }
 
 dependencies {
@@ -61,11 +54,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
 
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'org.jsoup:jsoup:1.8.1'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
-    // 状态栏颜色
-    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    compile 'com.umeng.analytics:analytics:latest.integration'
+//    compile 'com.squareup.okhttp:okhttp:2.5.0'
+//    compile 'org.jsoup:jsoup:1.8.1'
+//    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+//    // 状态栏颜色
+//    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+//    compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.githang:umeng-update:2.6.0.1'
 }
