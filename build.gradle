@@ -1,5 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     repositories {
         jcenter()
@@ -11,15 +10,8 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-apply plugin: 'com.github.piasy.okbuck-gradle-plugin'
 
-allprojects {
-    repositories {
-        jcenter()
-        mavenCentral()
-        maven {url 'https://dl.bintray.com/msdx/maven'}
-    }
-}
+apply plugin: 'com.github.piasy.okbuck-gradle-plugin'
 
 okbuck {
     target "android-22"
@@ -27,6 +19,14 @@ okbuck {
     signConfigName "myConfig"
     resPackages = [
 //            'dummylibrary': 'com.github.piasy.okbuck.example.dummylibrary',
-'app': 'com.githang.gradledoc',
+        'app': 'com.githang.gradledoc',
     ]
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {url 'https://dl.bintray.com/msdx/maven'}
+    }
 }

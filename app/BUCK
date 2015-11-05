@@ -5,6 +5,7 @@ android_resource(
 	deps = [
 		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
 		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+		'//.okbuck/app:aar__umeng-update-2.6.0.1.aar',
 	],
 	visibility = [
 		'PUBLIC',
@@ -59,10 +60,12 @@ android_library(
 		'//.okbuck/app:jar__support-annotations-22.2.1.jar',
 		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
 		'//.okbuck/app:jar__umeng-analytics-v5.6.1.jar',
+		'//.okbuck/app:jar__okio-1.6.0.jar',
 		'//.okbuck/app:jar__systembartint-1.0.3.jar',
 		'//.okbuck/app:jar__universal-image-loader-1.9.3.jar',
 		'//.okbuck/app:jar__jsoup-1.8.1.jar',
 		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+		'//.okbuck/app:aar__umeng-update-2.6.0.1.aar',
 	],
 	visibility = [
 		'PUBLIC',
@@ -84,14 +87,15 @@ android_library(
 		':res_main',
 		':build_config_release',
 		'//.okbuck/app:jar__okhttp-2.5.0.jar',
-		'//.okbuck/app:jar__okio-1.6.0.jar',
 		'//.okbuck/app:jar__support-annotations-22.2.1.jar',
 		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
 		'//.okbuck/app:jar__umeng-analytics-v5.6.1.jar',
+		'//.okbuck/app:jar__okio-1.6.0.jar',
 		'//.okbuck/app:jar__systembartint-1.0.3.jar',
 		'//.okbuck/app:jar__universal-image-loader-1.9.3.jar',
 		'//.okbuck/app:jar__jsoup-1.8.1.jar',
 		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+		'//.okbuck/app:aar__umeng-update-2.6.0.1.aar',
 	],
 	visibility = [
 		'PUBLIC',
@@ -111,6 +115,7 @@ android_manifest(
 	deps = [
 		'//.okbuck/app:aar__appcompat-v7-22.2.1.aar',
 		'//.okbuck/app:aar__support-v4-22.2.1.aar',
+		'//.okbuck/app:aar__umeng-update-2.6.0.1.aar',
 	],
 	visibility = [
 		'PUBLIC',

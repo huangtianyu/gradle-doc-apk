@@ -20,10 +20,11 @@ import com.githang.gradledoc.common.BaseActivity;
 import com.githang.gradledoc.datasource.HttpProxy;
 import com.githang.gradledoc.others.AboutActivity;
 import com.githang.gradledoc.process.ProcessActivity;
-//import com.umeng.analytics.MobclickAgent;
-//import com.umeng.update.UmengUpdateAgent;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.update.UmengUpdateAgent;
 
 import java.util.List;
+
 
 
 /**
@@ -90,9 +91,9 @@ public class ContentsActivity extends BaseActivity {
 
         requestContents();
 
-//        UmengUpdateAgent.setUpdateAutoPopup(true);
-//        UmengUpdateAgent.setUpdateOnlyWifi(false);
-//        UmengUpdateAgent.update(this);
+        UmengUpdateAgent.setUpdateAutoPopup(true);
+        UmengUpdateAgent.setUpdateOnlyWifi(false);
+        UmengUpdateAgent.update(this);
     }
 
     private void requestContents() {

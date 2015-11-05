@@ -60,5 +60,5 @@ dependencies {
 //    // 状态栏颜色
 //    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 //    compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'com.githang:umeng-update:2.6.0.1'
+    compile 'com.githang:umeng-update:2.6.0.1@aar'
 }

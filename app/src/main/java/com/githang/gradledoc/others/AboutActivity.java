@@ -1,11 +1,9 @@
 package com.githang.gradledoc.others;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.githang.gradledoc.BuildConfig;
 import com.githang.gradledoc.R;
 import com.githang.gradledoc.common.BaseBackActivity;
 import com.umeng.analytics.MobclickAgent;
@@ -23,15 +21,7 @@ public class AboutActivity extends BaseBackActivity {
     }
 
     private void setVersion() {
-        ApplicationInfo info = this.getApplicationInfo();
-        mVersion.setText("版本: ");
-        try {
-            PackageInfo packageInfo= getPackageManager().getPackageInfo(info.packageName, 0);
-            mVersion.append(" V");
-            mVersion.append(packageInfo.versionName);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        mVersion.setText("版本: v" + BuildConfig.VERSION_NAME);
     }
 
 
